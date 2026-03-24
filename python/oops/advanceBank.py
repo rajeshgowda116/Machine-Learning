@@ -14,6 +14,16 @@ class Bankaccont:
       print(f"you withdraw {amount} successfully")
     else:
       print("insufisient balence")
-
+  def display(self):
+      print("\n--- Account Details ---")
+      print("Name:", self.name)
+      print("Account No:", self.acc_no)
+      print("Balance:", self.balance)
+  
+class SavingsAccount(Bankaccont):
+  def add_interest(self):
+    interest=self.balence*0.5
+    self.balence+=interest
+    print(f"Interest added: ₹{interest}")
   
 
