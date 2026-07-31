@@ -1,10 +1,13 @@
 import streamlit as st
 import pandas as pd
 import joblib
+from pathlib import Path
 
-model = joblib.load("knn_heart.pkl")
-scaler = joblib.load("scalar.pkl")
-expected_columns = joblib.load("columns.pkl")
+BASE_DIR = Path(__file__).resolve().parent
+
+model = joblib.load(BASE_DIR / "knn_heart.pkl")
+scaler = joblib.load(BASE_DIR / "scalar.pkl")
+expected_columns = joblib.load(BASE_DIR / "columns.pkl")
 numeric_columns = list(scaler.feature_names_in_)
 
 st.title("Heart Stroke Prediction by Rajesh")
@@ -60,6 +63,6 @@ if st.button("Predict"):
 
     # Show result
     if prediction == 1:
-        st.error("⚠️ High Risk of Heart Disease")
+        st.error("High Risk of Heart Disease")
     else:
-        st.success("✅ Low Risk of Heart Disease")
+        st.success("Low Risk of Heart Disease")
